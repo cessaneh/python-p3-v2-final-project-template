@@ -1,21 +1,19 @@
 # Phase 3 CLI+ORM Project Template
 
 ## Learning Goals
-
-- Discuss the basic directory structure of a CLI.
-- Outline the first steps in building a CLI.
-
 ---
-
+- Discuss the basic directory structure of a CLI.
+- Outline the first steps in building a CLI,
+---
 ## Introduction
-
 You now have a basic idea of what constitutes a CLI. Fork and clone this lesson
 for a project template for your CLI.
 
 Take a look at the directory structure:
+---
+
 
 ```console
-.
 ├── Pipfile
 ├── Pipfile.lock
 ├── README.md
@@ -141,7 +139,6 @@ ever left a comment on Reddit, you might already know the basics). Refer to the
 cheat sheet in this assignments's resources for a basic guide to Markdown.
 
 ### What Goes into a README?
-
 This README serves as a template. Replace the contents of this file to describe
 the important files in your project and describe what they do. Each Python file
 that you edit should get at least a paragraph, and each function should be
