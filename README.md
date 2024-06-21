@@ -7,6 +7,7 @@ This project is a command-line interface application designed for managing an on
 main.py
 The main.py script serves as the entry point for the CLI application. It provides a menu-driven interface where users can perform various actions such as adding customers and products, creating orders, adding items to orders, and retrieving information about customers, products, orders, and order items.
 
+
 ## Functions
 `main()`: This function initializes instances of database classes (CustomerDB, ProductDB, OrderDB, OrderItemDB) and presents a menu to the user. Depending on the user's choice, it calls corresponding methods from these database classes to perform CRUD operations on the database.
 
