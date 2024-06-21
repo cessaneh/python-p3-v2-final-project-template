@@ -44,4 +44,5 @@ def create_tables():
     cursor.close()
     connection.close()
 
+
 create_tables()
