@@ -15,3 +15,4 @@ class ProductDB:
 
     def close(self):
         self.connection.close()
+
