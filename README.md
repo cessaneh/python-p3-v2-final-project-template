@@ -1,7 +1,14 @@
-# Phase 3 project
+
+# Online Store System
+
+## Date
+12th June 2024
+
+BY Princess Mumbi
 
 # Description
 This project is a command-line interface application designed for managing an online store.It allows users to interact with the database to add customers, products, orders, and order items, as well as retrieve information about them. The application is built using Python and SQLite for database management.
+
 
 ## CLI Script
 main.py
@@ -67,4 +74,54 @@ orders.py: Database class for managing orders.
 order_items.py: Database class for managing order items.
 online_store.db: SQLite database file storing customer, product, order, and order item data.
 
+## How to use
 
+## Requirements
+
+1. A computer with bash terminal and python installed
+
+### Installation Process
+
+1. Clone this repository using 
+
+    bash
+       git@github.com:cessaneh/python-p3-v2-final-project-template.git
+
+    or by downloading the zip file of the code.
+
+2. The repository, if downloaded as a .zip file will need to be     extracted to your preffered location.
+
+3. Navigate to the project folder on your bash terminal.
+
+4. Install the dependencies using
+
+    bash
+        pipenv install
+        pipenv shell
+    
+
+5. Run the application using
+
+    bash
+        python3 database/database_setup.py
+    
+
+    then
+
+    ```bash
+        python3 main.py
+
+
+
+## Technologies Used
+
+* python3
+
+* SQLite3
+
+
+## Support and Contact Details
+
+Incase of any query, need for collaboration or issues with this code, please contact
+
+https://github.com/cessaneh
