@@ -1,169 +1,69 @@
-# Phase 3 CLI+ORM Project Template
+# Phase 3 project
 
-## Learning Goals
----
-- Discuss the basic directory structure of a CLI.
-- Outline the first steps in building a CLI,
----
-## Introduction
-You now have a basic idea of what constitutes a CLI. Fork and clone this lesson
-for a project template for your CLI.
+# Description
+This project is a command-line interface application designed for managing an online store.It allows users to interact with the database to add customers, products, orders, and order items, as well as retrieve information about them. The application is built using Python and SQLite for database management.
 
-Take a look at the directory structure:
----
+## CLI Script
+main.py
+The main.py script serves as the entry point for the CLI application. It provides a menu-driven interface where users can perform various actions such as adding customers and products, creating orders, adding items to orders, and retrieving information about customers, products, orders, and order items.
 
+## Functions
+`main()`: This function initializes instances of database classes (CustomerDB, ProductDB, OrderDB, OrderItemDB) and presents a menu to the user. Depending on the user's choice, it calls corresponding methods from these database classes to perform CRUD operations on the database.
 
-```console
-├── Pipfile
-├── Pipfile.lock
-├── README.md
-└── lib
-    ├── models
-    │   ├── __init__.py
-    │   └── model_1.py
-    ├── cli.py
-    ├── debug.py
-    └── helpers.py
-```
+## Functionality Overview:
 
-Note: The directory also includes two files named `CONTRIBUTING.md` and
-`LICENSE.md` that are specific to Flatiron's curriculum. You can disregard or
-delete the files if you want.
+`Add new customer`: Prompts the user to enter customer details (name and email) and adds them to the database using CustomerDB.add_customer().
+`Add new product`: Prompts the user to enter product details (name and price) and adds them to the database using ProductDB.add_product().
+`Create new order`: Prompts the user to enter customer ID and order date, then creates a new order in the database using OrderDB.add_order().
+`Add item to order`: Prompts the user to enter order ID, product ID, and quantity, then adds an item to an existing order using OrderItemDB.add_order_item().
+`Get all customers`: Retrieves and displays all customers from the database using CustomerDB.get_all_customers().
+`Get all products`: Retrieves and displays all products from the database using ProductDB.get_all_products().
+`Get all orders`: Retrieves and displays all orders from the database using OrderDB.get_all_orders().
+`Get all order items`: Retrieves and displays all order items from the database using OrderItemDB.get_all_order_items().
+`Error Handling`: Error handling is implemented to catch exceptions that may occur during database operations, ensuring robustness and preventing crashes.
 
----
+## Database Classes
+`customers.py`
+## Description
+The customers.py file contains the CustomerDB class, responsible for managing operations related to customers in the database.
 
-## Generating Your Environment
+Functions
+`add_customer(name, email)`: Inserts a new customer into the customers table with the provided name and email.
+`get_all_customers()`: Retrieves all customers from the customers table and returns them as a list of tuples.
 
-You might have noticed in the file structure- there's already a Pipfile!
+`products.py`
+## Description
+The products.py file contains the ProductDB class, which handles operations related to products in the database.
 
-Install any additional dependencies you know you'll need for your project by
-adding them to the `Pipfile`. Then run the commands:
-
-```console
-pipenv install
-pipenv shell
-```
-
----
-
-## Generating Your CLI
-
-A CLI is, simply put, an interactive script and prompts the user and performs
-operations based on user input.
-
-The project template has a sample CLI in `lib/cli.py` that looks like this:
-
-```py
-# lib/cli.py
-
-from helpers import (
-    exit_program,
-    helper_1
-)
+Functions
+`add_product(name, price)`: Inserts a new product into the products table with the provided name and price.
+`get_all_products()`: Retrieves all products from the products table and returns them as a list of tuples.
 
 
-def main():
-    while True:
-        menu()
-        choice = input("> ")
-        if choice == "0":
-            exit_program()
-        elif choice == "1":
-            helper_1()
-        else:
-            print("Invalid choice")
+`orders.py`
+## Description
+The orders.py file houses the OrderDB class, responsible for managing operations related to orders in the database.
+
+Functions
+`add_order(customer_id, order_date)`: Creates a new order in the orders table with the provided customer ID and order date.
+`get_all_orders()`: Retrieves all orders from the orders table, including associated customer details, and returns them as a list of tuples.
 
 
-def menu():
-    print("Please select an option:")
-    print("0. Exit the program")
-    print("1. Some useful function")
+`order_items.py`
+## Description
+The order_items.py file contains the OrderItemDB class, handling operations related to order items in the database.
+
+ Functions
+`add_order_item(order_id, product_id, quantity)`: Inserts a new order item into the order_items table with the provided order ID, product ID, and quantity.
+`get_all_order_items()`: Retrieves all order items from the order_items table, including associated order and product details, and returns them as a list of tuples.
 
 
-if __name__ == "__main__":
-    main()
-```
-
-The helper functions are located in `lib/helpers.py`:
-
-```py
-# lib/helpers.py
-
-def helper_1():
-    print("Performing useful function#1.")
+## Project Structure
+main.py: Entry point for the CLI application.
+customers.py: Database class for managing customers.
+products.py: Database class for managing products.
+orders.py: Database class for managing orders.
+order_items.py: Database class for managing order items.
+online_store.db: SQLite database file storing customer, product, order, and order item data.
 
 
-def exit_program():
-    print("Goodbye!")
-    exit()
-```
-
-You can run the template CLI with `python lib/cli.py`, or include the shebang
-and make it executable with `chmod +x`. The template CLI will ask for input, do
-some work, and accomplish some sort of task.
-
-Past that, CLIs can be whatever you'd like, as long as you follow the project
-requirements.
-
-Of course, you will update `lib/cli.py` with prompts that are appropriate for
-your application, and you will update `lib/helpers.py` to replace `helper_1()`
-with a useful function based on the specific problem domain you decide to
-implement, along with adding other helper functions to the module.
-
-In the `lib/models` folder, you should rename `model_1.py` with the name of a
-data model class from your specific problem domain, and add other classes to the
-folder as needed. The file `lib/models/__init__.py` has been initialized to
-create the necessary database constants. You need to add import statements to
-the various data model classes in order to use the database constants.
-
-You are also welcome to implement a different module and directory structure.
-However, your project should be well organized, modular, and follow the design
-principal of separation of concerns, which means you should separate code
-related to:
-
-- User interface
-- Data persistence
-- Problem domain rules and logic
-
----
-
-## Updating README.md
-
-`README.md` is a Markdown file that should describe your project. You will
-replace the contents of this `README.md` file with a description of **your**
-actual project.
-
-Markdown is not a language that we cover in Flatiron's Software Engineering
-curriculum, but it's not a particularly difficult language to learn (if you've
-ever left a comment on Reddit, you might already know the basics). Refer to the
-cheat sheet in this assignments's resources for a basic guide to Markdown.
-
-### What Goes into a README?
-This README serves as a template. Replace the contents of this file to describe
-the important files in your project and describe what they do. Each Python file
-that you edit should get at least a paragraph, and each function should be
-described with a sentence or two.
-
-Describe your actual CLI script first, and with a good level of detail. The rest
-should be ordered by importance to the user. (Probably functions next, then
-models.)
-
-Screenshots and links to resources that you used throughout are also useful to
-users and collaborators, but a little more syntactically complicated. Only add
-these in if you're feeling comfortable with Markdown.
-
----
-
-## Conclusion
-
-A lot of work goes into a good CLI, but it all relies on concepts that you've
-practiced quite a bit by now. Hopefully this template and guide will get you off
-to a good start with your Phase 3 Project.
-
-Happy coding!
-
----
-
-## Resources
-
-- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
